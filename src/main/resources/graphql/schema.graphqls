@@ -1,36 +1,52 @@
-type Query{
-    getPost(id : ID!) : Post,
-    getPosts : [Post]
-}
-
 type Mutation {
-    createPost(dto : PostCreateDto) : Post
+    createUser(dto : UserDto) : User
 }
 
+type Query {
+    getUser(id : Int) : User
+}
 
-input PostCreateDto {
-    title : String,
-    body : String,
-    rating : String,
+input TodoDto {
+    title :String,
+    description : String,
+    category : Category,
+    level : Level,
+    deadline : String,
+    completed : Boolean,
     userId : Int
 }
 
-type Post {
+input UserDto{
+    fullName : String,
+    email : String,
+    password : String
+}
+
+type Todo {
     id : ID!,
-    title : String,
-    body : String,
-    rating :Rating,
+    title :String,
+    description : String,
+    category : Category,
+    deadline : String,
+    completed : Boolean,
+    level : Level,
     user : User
 }
 
 type User {
     id : ID!,
-    firstName : String,
-    lastName : String,
-    posts : [Post]
+    fullName : String,
+    email : String,
+    password : String,
+    todos : [Todo]
 }
 
-type Rating {
-    star : String,
-    rate : String
+enum Category {
+    ENTERTAINMENT,
+    STUDY,
+    WORK
+}
+
+enum Level {
+    HARD, EASY, MIDDLE
 }

@@ -1,0 +1,36 @@
+type Query{
+    getPost(id : ID!) : Post,
+    getPosts : [Post]
+}
+
+type Mutation {
+    createPost(dto : PostCreateDto) : Post
+}
+
+
+input PostCreateDto {
+    title : String,
+    body : String,
+    rating : String,
+    userId : Int
+}
+
+type Post {
+    id : ID!,
+    title : String,
+    body : String,
+    rating :Rating,
+    user : User
+}
+
+type User {
+    id : ID!,
+    firstName : String,
+    lastName : String,
+    posts : [Post]
+}
+
+type Rating {
+    star : String,
+    rate : String
+}

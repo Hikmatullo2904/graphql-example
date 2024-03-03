@@ -1,9 +1,17 @@
 type Mutation {
-    createUser(dto : UserDto) : User
+    createUser(dto : UserDto) : User,
+    createTodo(dto : TodoDto) : Todo,
+    deleteUser(id : ID!) : String,
+    updateUser(id : ID!, dto : UserDto) : String,
+    updateTodo(id : ID!, dto : TodoDto) : String
 }
 
 type Query {
-    getUser(id : Int) : User
+    getUser(id : Int) : User,
+    getUsers : [User],
+    getTodo(id : Int) : Todo,
+    getTodos : [Todo],
+    getUserTodos(userId : ID) : [Todo]
 }
 
 input TodoDto {
